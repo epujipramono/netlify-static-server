@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products | Product Dashboard</title>
+  <link rel="stylesheet" href="../style/dashboard.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <span class="brand-mark">P</span>
+        <div>
+          <strong>Product Admin</strong>
+          <span>Management</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a class="nav-item active" href="/pages/dashboard.html">
+          <span>▦</span> Products
+        </a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Dashboard</p>
+          <h1>Products</h1>
+        </div>
+        <button id="addProductButton" class="primary-button">+ Add Product</button>
+      </header>
+
+      <section class="stats-grid">
+        <article class="stat-card">
+          <span>Total Products</span>
+          <strong id="totalProducts">0</strong>
+        </article>
+        <article class="stat-card">
+          <span>Total Stock</span>
+          <strong id="totalStock">0</strong>
+        </article>
+        <article class="stat-card">
+          <span>Inventory Value</span>
+          <strong id="inventoryValue">Rp 0</strong>
+        </article>
+      </section>
+
+      <section class="content-card">
+        <div class="section-heading">
+          <div>
+            <h2>Product List</h2>
+            <p>Manage your products from one place.</p>
+          </div>
+          <input id="searchInput" class="search-input" type="search" placeholder="Search product...">
+        </div>
+
+        <div id="statusMessage" class="status-message"></div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Stock</th>
+                <th class="action-column">Action</th>
+              </tr>
+            </thead>
+            <tbody id="productTableBody"></tbody>
+          </table>
+          <div id="emptyState" class="empty-state">
+            <strong>No products found</strong>
+            <span>Add your first product to get started.</span>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="productModal" class="modal hidden">
+    <div class="modal-backdrop" data-close-modal></div>
+    <section class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-header">
+        <div>
+          <p class="eyebrow">Product</p>
+          <h2 id="modalTitle">Add Product</h2>
+        </div>
+        <button id="closeModalButton" class="icon-button" type="button" aria-label="Close">×</button>
+      </div>
+
+      <form id="productForm" class="product-form">
+        <input type="hidden" id="productId">
+
+        <label for="productName">Name</label>
+        <input id="productName" type="text" maxlength="150" required>
+
+        <label for="productDescription">Description</label>
+        <textarea id="productDescription" rows="4" maxlength="500"></textarea>
+
+        <div class="form-row">
+          <div>
+            <label for="productPrice">Price</label>
+            <input id="productPrice" type="number" min="0" step="0.01" required>
+          </div>
+          <div>
+            <label for="productStock">Stock</label>
+            <input id="productStock" type="number" min="0" step="1" required>
+          </div>
+        </div>
+
+        <p id="formError" class="form-error"></p>
+
+        <div class="modal-actions">
+          <button id="cancelButton" class="secondary-button" type="button">Cancel</button>
+          <button class="primary-button" type="submit">Save Product</button>
+        </div>
+      </form>
+    </section>
+  </div>
+
+  <script src="../script/dashboard.js"></script>
+</body>
+</html>
